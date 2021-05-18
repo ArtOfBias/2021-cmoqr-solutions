@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\setlength{\parindent}{0pt}
+
+\usepackage{geometry}
+\geometry{
+ letterpaper,
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm
+ }
+
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question  8\\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+Starting with the King, moving in the clockwise direction, label the people from 1 to 2021. The original problem is converted to: find the number of circular permutations of the set $\{1,2, \dots , 2021\}$ without succession. (Succession is when a number is exactly 1 greater than the number before it, 1 after 2021 is a special succession.) \\
+
+We will find an explicit formula for a circular permutation of the set $\{1,2,\dots , n\}$ without successions. Note that $1$ after $n$ is also a succession. \\
+
+For a set $S$ define $|S|$ to be the cardinality of the set, that is, the number of elements of $S$. \\
+
+Let $C$ be the set of circular permutations $(p_1,p_2,\dots , p_n)$ of the set $\{1,2,3,\dots , n\}$. \\
+Let $C_i$ be the subset of $C$ where the pair $(p_i, p_{i + 1})$ is a succession, with $i = 1,2,3,\dots , n$. \\
+
+Now, consider a set of $k$ indices $I = \{i_1,i_2, \dots , i_k \}$, with $1 \le i_1 < i_2 < \dots \le n$. \\
+We now prove $\left| C_{i_1}\cap C_{i_2} \cap \dots \cap C_{i_k} \right|$ depends only on $k$ and is independent of the indices. \\
+
+When the set $I$ is consists entirely of successive integers $l,l+1,\dots l + k - 1$  (note this is a circular permutation, so when the number exceeds $n$, take modulo $n$), the $k$ successions $(p_l,p_{l+1}), (p_{l+1},p_{l+2}), \dots, (p_{l+k - 1},p_{l+k})$ can be joined to form a block $b$ of $k + 1$ successive integers $(p_l,p_{l+1},p_{l+2}, \dots ,p_{l+k})$. Here, $\left| C_{i_1}\cap C_{i_2} \cap \dots \cap C_{i_k} \right|$ is just the number of circular permutations of the block $b$ and the remaining $n-k-1$ integers, which total to $n-k$ objects. Recall the number of circular permutations of $m$ objects is $\frac{m!}{m} = (m-1)!$. \\
+Thus, $\left| C_{i_1}\cap C_{i_2} \cap \dots \cap C_{i_k} \right|$ =  $(n-k-1)!$ in this case. \\
+
+When the set $I$ does not consist of successive integers, it can be partitioned into $d$ disjoint subsets $I_1,I_2,\dots , I_d$, with $d\in \{ 2,3,4,\dots,k \}$, such that each set contains the greatest possible number of successive integers. Thus, each of $I_1,I_2,\dots , I_d$, is either a set of successive integers or a set of one integer. Let $c_j = |I_j|$, with $\sum_{j=1}^d c_j = |I| = k$. \\
+
+For any $j\in \{1,2,3,\dots , d \}$ the successions in subset $I_j$ can be joined to form a block $b_j$ of $c_j + 1$ successive integers, and an integer cannot be in two blocks, (otherwise, that contradicts the fact that each $I_j$ contains the greatest number of successive integers). Thus, the total number of integers in the blocks are:
+$$\sum_{a=j}^d (c_j + 1) = d + \sum_{a=j}^d c_j = d + k.$$
+
+Now, $\left| C_{i_1}\cap C_{i_2} \cap \dots \cap C_{i_k} \right|$ is just the number of circular permutations of the $d$ blocks and the remaining $n-k-d$ integers, which total to $n-k$ objects. There are $(n-k-1)!$ ways to permute the blocks and the remaining integers. \\
+
+Thus, $\left| C_{i_1}\cap C_{i_2} \cap \dots \cap C_{i_k} \right|$ =  $(n-k-1)!$, which depends only on $k$. \\
+
+Thus, the total number of circular permutations with at least $k$ successions is $(n-k-1)!$ multiplied by the number of ways to choose the indices $I$, which is $\binom{n}{k}$. This product equals $\binom{n}{k}(n-k-1)!$ for $k\in \{0,1,2,\dots, n-1 \}$. Note the special case when $k = n$, every number must be in succession, and the only possible circular permutation is $(1,2,3,\dots , n)$, and thus the total is just $1$. \\
+
+By the inclusion-exclusion principle, the number of circular permutations of the set $\{1,2,3,\dots , n\}$ with exactly 0 successions is:
+$$ \sum_{k=0}^{n-1} (-1)^k \binom{n}{k}(n-k-1)! + (-1)^n.$$
+Thus, for the original problem, the number of reseatings is:
+\begin{align*}
+    &\sum_{k=0}^{2021-1} (-1)^k \binom{2021}{k}(2021-k-1)! + (-1)^{2021} \\
+    = &\boxed{\sum_{k=0}^{2020} (-1)^k \binom{2021}{k}(2020-k)! + -1}.
+\end{align*} 
+
+\end{document}
+
+
+
+is the set of successive integers $l,l+1,\dots l + c_j - 1$ (note this is a circular permutation, so when the number exceeds $n$, take modulo $n$), where $c_j = |I_j|$. The $c_j$ successions $(l,l+1), (l+1,l+2), \dots, (l+c_j - 1,l+c_j)$
+
+By reseating the guests, the King is simply making a circular permutation of the set $\{ 1,2,3,\dots , 2021\}$, as the circular permutation can always be rotated to the King sits in his throne. \\
+
+However, since everyone notices the person to their left is different from the one previously to their left, then the new circular permutation cannot contain a succession. \\
+
+Consider the set $\{1,2,3,\dots , n\}$ permuted in a circle $(p_1,p_2,\dots , p_n)$, where its rotations are considered to be the same. Define such a permutation to be a \textbf{circular permutation}. \\
+Note that in a circular permutation $(p_1,p_2,\dots , p_n)$, $p_{i + k} = p_{(i + k) \bmod n}$. \\
+
+For a circular permutation $(p_1,p_2,\dots , p_n)$ of the set $\{1,2,\dots , n\}$, if there exists a pair $(p_i,p_{i+1})$ such that:
+$$p_i + 1 \equiv p_{i + 1} \bmod n,$$
+
+then define the pair $(p_i,p_{i+1})$ to be a \textbf{succession}. \\
+
+Label the King 1, moving in the clockwise direction (to the king's left) label the guests from 2 to 2021. By reseating the guests, the King is simply making a circular permutation of the set $\{ 1,2,3,\dots , 2021\}$, as the circular permutation can always be rotated to the King sits in his throne. \\
+
+The set $I$ can be partitioned into $d$ disjoint subsets $I_1,I_2,\dots , I_d$, each of which is either a set of successive integers or a set of one integer. 

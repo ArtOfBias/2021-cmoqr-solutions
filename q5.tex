@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\usepackage{geometry}
+\geometry{
+ letterpaper,
+ left=35mm,
+ right=35mm,
+ top=30mm,
+ bottom=30mm
+ }
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question 5 \\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+% Let A denote Alphonse, B denote Beryl. \\
+Let $E_2 \subset \mathbb{N}$ denote the set of positive integers where the exponent of $2$ in its prime factorisation is even. That is:
+$$\forall k \in E_2 \implies \exists m,n \in \{ \mathbb{Z} \cap [0, \infty) \} : k = 2^{2m}(2n + 1).$$
+
+Let $O_2 \subset \mathbb{N}$ denote the set of positive integers where the exponent of $2$ in its prime factorisation is odd. That is:
+$$\forall k \in O_2 \implies \exists m,n \in \{ \mathbb{Z} \cap [0, \infty) \} : k = 2^{2m + 1}(2n + 1).$$
+%For any integer in $E_2$, call it 2-even, and any integer in $O_2$ 2-odd. \\
+Note that $E_2 \cap O_2 = \O$ and $E_2 \cup O_2 = \mathbb{N}$ as the exponent of 2 in a prime factorisation can only be even or odd. \\ \\
+
+\textbf{Lemma 1:}
+\setlength{\parindent}{15pt} \setlength{\parskip}{5pt}
+\par If an integer $n \in E_2$, then $\frac{n}2, 2n \in O_2$. \setlength{\parskip}{0pt}
+\par If an integer $n \in O_2$, then $\frac{n}2, 2n \in E_2$. \\
+
+\setlength{\parindent}{0pt}
+\textbf{Proof:} \\
+
+When an integer is multiplied or divided by $2$, the exponent of $2$ in it prime factorisation increases or decreases by $1$, which changes its parity and hence which set the integer belongs to. \\ \\
+
+\textbf{Lemma 2:}
+\begin{align*}
+    &\text{Given rectangles } (1\times n, 1\times n) \text{, where } n \in E_2 \text{. The current player cannot win.} \tag{i} \\
+    &\text{Given rectangles } (1\times m, 1\times m) \text{, where } m \in O_2 \text{. The current player can win.} \tag{ii} \\
+    &\text{Given rectangles } (1\times a, 1\times b) \text{, where } a,b \in \mathbb{N} \text{ and } a \neq b \text{. The current player can win.} \tag{iii}
+\end{align*}
+
+
+\textbf{Proof:} \\
+
+First, consider $(1 \times 1, 1 \times 1)$, this is the only way the game can end, when a player receives these rectangles, they cannot make a cut and loses. Also, since $1 = 2^0$ this is obviously case (i).\\
+
+\textbf{In a case (i)} that is not $(1 \times 1, 1 \times 1)$, the player must make a cut, suppose it is cut into the following:
+$$ (1 \times n, 1 \times k, 1 \times l) \text{ where } k + l = n,\ k \le l < n.$$
+
+The player must then discard a rectangle. If one of the latter two are discarded, this becomes a case (iii) for the other player as $k,l \neq n$. If $1 \times n$ is discarded, then it becomes case (iii) for the other player if $k\neq l$. Now, consider the case when $k = l$. Since $k + l = n$, this means that $k = l = \frac{n}{2}.$ Since $n \in E_2$, $\frac{n}2 \in O_2$ by Lemma 1. Thus, this is a case (ii). \\
+
+\textbf{In case (ii)}, it can be proven that the current player can always give the next player a case (i). The current player takes one of the rectangles and cuts it into:
+$$ \left( 1 \times m, 1 \times \frac{m}2, 1 \times \frac{m}2 \right).$$
+
+Since $m \in O_2$, the exponent of 2 in its prime factorisation is at least $1$, so $\frac{m}2$ is an integer, and the above cut can be made. The player then discards $1 \times m$, giving the next player $\left( 1 \times \frac{m}2, 1 \times \frac{m}2 \right)$. Since $m \in O_2$, $\frac{m}2 \in E_2$ by Lemma 1. Thus the next player is given a case (i).
+
+\newpage
+
+\textbf{In case (iii)} the next player can also be given a case (i). First assume without loss of generality that $a < b$. Then, this has two cases:
+\begin{align*}
+    a &\in E_2 \text{ or } \tag{iii.i} \\
+    a &\in O_2. \tag{iii.ii}
+\end{align*}
+In case (iii.i), since $b>a$, the player cuts the rectangles into:
+$$ (1 \times a, 1 \times a, 1 \times (b-a)).$$
+Then, $1 \times (b-a)$ is discarded to produce $(1 \times a, 1 \times a)$. Since $a \in E_2$, this is case (i). \\
+
+In case (iii.ii),  $1\times a$ is cut in half and $1\times b$ is discarded to produce $(1 \times \frac{a}2, 1 \times \frac{a}2)$. \\
+$\frac{a}2 \in E_2$ by Lemma 1, so this is also case (i). \\
+
+Thus, in cases (ii) and (iii), it is always possible to perform an action that gives the next player a case (i), while any action on case (i) can only give the next player case (ii) or (iii). \\
+Note that the total area of the two rectangles is monovariant as it decreases every time a cut is made and a rectangle discarded. Thus, the game cannot continue infinitely and must eventually reach the position $(1 \times 1, 1 \times 1)$, which has the least possible total area. \\
+
+Thus, when given a case (ii) or (iii) position, the current player can force the next player into a case (i) position, which will return to them a case (ii) or a case (iii). Thus, the current player in case (ii) or (iii) cannot lose as $(1 \times 1, 1 \times 1)$ is a case (i), thus a player can always win given cases (ii) and (iii). \\
+
+Similarly, when the current player has a case (i), the next player can only be given a case (ii) or (iii), where they can then force the current player into a case (i) position. This continues and eventually the current player is given $(1 \times 1, 1 \times 1)$ and loses. \\ \\
+
+
+\textbf{Lemma 3:}
+
+\setlength{\parskip}{5pt}
+For any integer $e \in E_2$, when the current player is given rectangles $(1\times e, 2\times 2 e)$, the next player can always win. \setlength{\parskip}{0pt} \\
+
+\setlength{\parindent}{0pt}
+\textbf{Proof:} \\
+
+Let A be the current player and B the next player. \\
+First, consider when A cuts the larger rectangle perfectly in half and discards $1\times e$. This gives:
+$$ (1\times 2e, 1\times 2e) \text{ or } (2\times e, 2\times e).$$
+
+In the first case, this is a case (ii) position in Lemma 2, and so B can win. In the second case, B cuts $2\times e$ in half and  discards the remaining $2\times e$ to give A $(1\times e, 1\times e)$, by Lemma 1 and Lemma 2 case (i), A loses and B wins. \\
+
+If A cuts $1\times e$ and discards $2\times 2e$, to produce $\left(1\times \dfrac{e}2, 1\times \dfrac{e}2 \right)$, by Lemma 1 and case (ii) of Lemma 2, B can win. \\
+
+If A cuts the larger rectangle in half and discards one half to produce $(1\times e, 1\times 2e)$, then by case (iii) of Lemma 2, B can win. \\
+
+\newpage
+If A cuts $1\times e$ into unequal pieces and discards the larger rectangle, then B is given:
+$$(1\times m, 1\times n)\text{ with } m\neq n, m + n = e.$$
+
+By case (iii) of Lemma 2, B can win. \\
+
+If A cuts $1\times e$ into two pieces and discards one of them, then B is given:
+\begin{equation*}
+    (1\times m, 2\times 2e)\text{ with }  m < e.
+\end{equation*}
+This has two cases: \\
+\textbf{If} $m \in O_2$, B cuts $1\times m$ in half and discards the $2\times 2e$ rectangle, giving A the following:
+$$\left( 1\times \frac{m}2, 1\times \frac{m}2 \right).$$
+
+By Lemma 1 and case (i) of Lemma 2, A loses and B wins. \\
+
+\textbf{If} $m \in E_2$, call this case (1). B cuts the $2\times 2e$ rectangle into $(2\times 2m, 2\times 2(e-m))$ and discards the latter, this is possible as $m<e$. Then A is given:
+$$(1\times m, 2\times 2 m) \text{ with } m \in E_2.$$
+
+This is a smaller version of the original rectangles in this lemma. \\
+
+Suppose instead that A cuts $2\times 2e$ into two pieces and discards one of them, then B is given:
+\begin{equation*}
+    (1\times e, 2\times m)\text{ with }  m < 2e.
+\end{equation*}
+This has two cases: \\
+\textbf{If} $m \in E_2$, B cuts $2\times m$ in half parallel to the side with length $m$ and discards $1\times e$, giving A the following:
+$$\left( 1\times m, 1\times m \right).$$
+
+By case (i) of Lemma 2, A loses and B wins. \\
+
+\textbf{If} $m \in O_2$, call this case (2). B cuts the $1\times e$ rectangle into $\left( 1\times \dfrac{m}2, 1\times \left( e - \dfrac{m}2 \right) \right )$ and discards the latter, this is possible as $m<2e$. Then A is given:
+$$\left(1\times \dfrac{m}2, 2\times m\right) \text{ with } \frac{m}2 \in E_2.$$
+
+Since $\dfrac{m}2 < e$, this is a smaller version of the original rectangles in this lemma. \\
+
+Now, consider cases (1) and (2). If A decides only performs these two moves, leading to case (1) or (2), then B can force them into the Lemma 3 position. Since the total area is strictly decreasing, A will eventually be given $(1\times 1, 2\times 2)$, which is a Lemma 3 position, where they must give B $(1\times 1, 1\times 2)$ or $(1\times 2, 1\times 2)$, by cases (ii) and (iii) of Lemma 2, B wins. \\
+
+Finally, if A discards $1\times e$ and cuts $2\times 2e$, giving B:
+$$(2\times m, 2\times n)\text{ with } m + n = 2e.$$
+If at least one of $m$ and $n$ are in $E_2$, then B simply cuts that rectangle into $( 1\times m, 1\times m )$ or $( 1\times n, 1\times n )$, depending on which of $m,n$ is in $E_2$. By case (i) of Lemma 2, A loses and B wins. \\
+
+Therefore, $m,n \in O_2$. Since $2e \in O_2$, without loss of generality assume $m > n$. However, similar to Lemma 2, B can then cut and discard on $(2\times m, 2\times n)$ to give A $(2\times n, 2\times n)$. To avoid giving B a rectangle with a side in $E_2$, A must cut then create another two unequal rectangles $(2\times a, 2\times b)$, with $a,b \in O_2,\ a < b$. B continues to give A two equal rectangles with side lengths in $O_2$, this is possible as long as $a,b \in O_2,\ a < b$. \\
+
+Since the area is strictly decreasing, A will eventually be given $(2\times 2, 2\times 2)$, at which point A must give B $(1\times 2, 2\times 2)$ or $(1\times 2, 1\times 2)$. Now, B cuts a $1\times 2$ rectangle to give A $(1\times 1, 1\times 1)$, and A loses. \\
+
+\textbf{Thus, B can always win when A is given $(1\times e, 2\times 2 e)$.}
+\section*{Part (a)}
+\boxed{\text{Beryl wins.}} \\
+
+The prime factorisation of $2020$ is $2^2\cdot 5 \cdot 101$, so $2020 \in E_2$. Note that $4040 = 2\times 2020.$\\
+By Lemma 3, no matter how Alphonse cuts and discards the rectangles, Beryl can always win.
+
+\section*{Part (B)}
+\boxed{\text{Alphonse wins.}} \\
+
+Assume $(100\times 100, 100\times 500)$ is a losing position, that is, any position given to Beryl must be a winning position. \\
+Based on this assumption, $(100\times 100, 100\times 100)$ is a winning position. The only possible moves for Beryl are the following: \\
+(1) Cut $100\times 100$ into $(a\times 100, b\times 100)$, with $a+b=100$ and $a,b<100$, and discard one of them to give Alphonse the position:
+$$(m\times100,100\times100),\text{ with } m < 100.$$
+
+(2) Cut $100\times 100$ into $(a\times 100, b\times 100)$, with $a+b=100$ and $a,b<100$, and discard $100\times100$ to give Alphonse the position:
+$$(a\times100,b\times100)\text{ with } a + b = 100\text{ and } a,b<100.$$
+
+At least one of these is a losing position, else Beryl cannot win from $(100\times 100, 100\times 100)$. \\
+However, both of these positions can be obtained from the original: \\
+since $m<100$ cut the $100\times 500$ rectangle into $(m\times100,(500-m)\times 100)$ and discard the latter:
+$$(m\times100,100\times100),$$
+cut the $100\times100$ rectangle into $(a\times 100, b\times 100)$, with $a+b=100$ and $a,b<100$, and discard $100\times500$:
+$$(a\times100,b\times100)\text{ with } a + b = 100\text{ and } a,b<100.$$
+Since both of these positions can be obtained from $(100\times 100, 100\times 500)$, the assumption that it is a losing position is incorrect. Thus, $(100\times 100, 100\times 500)$ is a winning position. \\
+
+\textbf{Thus, Alphonse wins from the position $(100\times 100, 100\times 500)$.}
+
+\end{document}
+Alphonse first cuts $100\times500$ into $(100\times 100, 100\times 400)$ and discards $100\times400$, giving Beryl $(100\times 100, 100\times 100)$. Suppose that this is a losing position, that is, Beryl has no move that can result in a win, then Alphonse simply wins with this move. \\
+
+However, a
+
+However, suppose Beryl can make a winning move from $(100\times 100, 100\times 100)$ and force Alphonse into a losing position. Beryl's can only cut one of the $100\times 100$ into $(a\times 100, b\times 100)$, with $a+b=100$ and $a,b<100$. Beryl can either discard one of them, to give Alphonse the position:
+
+$$(m\times100,100\times100),$$
+with $m$ some positive integer less than $100$, or Beryl can discard $100\times100$, giving Alphonse:
+$$(a\times100,b\times100)\text{ with } a + b = 100\text{ and } a,b<100.$$
+If Beryl can win, then at least one of those positions is a losing position. \\
+However, if these are losing positions, Alphonse can give Beryl these positions. Since $m<100$, Alphonse can cut the $100\times 500$ rectangle into $(m\times100,(500-m)\times 100)$ and discard the latter, giving Beryl:
+$$(m\times100,100\times100).$$
+Alphonse can also cut the $100\times100$ rectangle into $(a\times 100, b\times 100)$, with $a+b=100$ and $a,b<100$, and discard $100\times500$. This gives Beryl:
+$$(a\times100,b\times100)\text{ with } a + b = 100\text{ and } a,b<100.$$
+Thus, any move made from $(100\times 100, 100\times 100)$ can also be made from $(100\times 100, 100\times 500)$, 
+\textbf{Thus, Alphonse always has a winning strategy, }
+
+
+Substitute a number $e \in E_2$ for 2020. The rectangles become. $(1\times e, 2\times 2e)$
+First, consider when A cuts the larger rectangle perfectly in half and discards $1\times e$. This gives:
+$$ (1\times 2e, 1\times 2e) \text{ or } (2\times e, 2\times e).$$
+
+In the first case, this is a case (ii) position in Lemma 2, and so B can win. In the second case, B cuts $2\times e$ in half and  discards the remaining $2\times e$ to give A $(1\times e, 1\times e)$, by Lemma 1 and Lemma 2 case (i), A loses and B wins. \\
+
+If A cuts $1\times e$ and discards $2\times 2e$, to produce $\left(1\times \dfrac{e}2, 1\times \dfrac{e}2 \right)$, by Lemma 1 and case (ii) of Lemma 2, B can win. \\
+
+If A cuts the larger rectangle in half and discards one half to produce $(1\times e, 1\times 2e)$, then by case (iii) of Lemma 2, B can win. \\
+
+If A cuts $1\times e$ into unequal pieces and discards the larger rectangle, then B is given:
+$$(1\times m, 1\times n)\text{ with } m\neq n, m + n = e.$$
+
+By case (iii) of Lemma 2, B can win.
+\newpage
+If A cuts $1\times e$ into unequal pieces and discards one of them, then B is given:
+\begin{equation}
+    (1\times m, 2\times 2e)\text{ with }  m < e .\tag{1}
+\end{equation}
+This has two cases. \\
+
+If $m \in O_2$, B cuts $1\times m$ in half and discards the $2\times 2e$ rectangle, giving A the following:
+$$\left( 1\times \frac{m}2, 1\times \frac{m}2 \right).$$
+By Lemma 1 and case (i) of Lemma 2, A loses and B wins. \\
+
+If $m \in O_2$, then 
+
+\newpage
+Let an unordered pair $(w \times x, y \times z)$ denote the rectangles that the current player is given. Note that the order of $w$ and $x$ and $y$ and $z$ does not matter. For example, the position with rectangles $(1\times 5, 3\times 4)$ is identical to the position with rectangles $(4\times 3, 1\times 5)$.
+
+\newpage
+\textbf{Lemma 2}: \\
+
+Let $e_1,e_2,e_3,e_4$ be arbitrary (not necessarily distinct) 2-even integers. \\
+Lot $o_1,o_2,o_3,o_4$ be arbitrary (not necessarily distinct) 2-odd integers. \\
+All possible rectangles pairs are one of the following cases:
+\begin{align}
+    &(e_1 \times e_2 , e_3 \times e_4) \\
+    &(e_1 \times e_2 , e_3 \times o_4) \\
+    &(e_1 \times e_2 , o_3 \times o_4) \\
+    &(e_1 \times o_2 , e_3 \times o_4) \\
+    &(e_1 \times o_2 , o_3 \times o_4) \\
+    &(o_1 \times o_2 , o_3 \times o_4)
+\end{align}
+In cases (2), (4), (5), the current player can win. \\
+In cases (1), (3), (6), the current player cannot win. \\
+
+\textbf{Proof:} \\
+
+First, consider $(1 \times 1, 1 \times 1)$, this is the only way the game can end, when a player receives these rectangles, they cannot make a cut and loses. Since $1 = 2^0$ this is obviously case (1).\\
+
+For case (1) that is not $(1 \times 1, 1 \times 1)$, there must be at least one side on one rectangle that can be cut. Let this be $e_1$ of $e_1 \times e_2$. Thus, $e_1 > 1$. This can cut the rectangle into either two, where both sides are 2-odd, 
+
+
+
+
+
+
+
+
+
+
+Given rectangles $(1\times n, 1\times n)$, where $n \in E_2$. The current player cannot win. \\
+Given rectangles $(1\times m, 1\times m)$, where $m \in O_2$. The current player can win. \\
+Given rectangles $(1\times a, 1\times b)$, where $a,b \in \mathbb{N}$ and $a\neq b$. The current player can win. \\

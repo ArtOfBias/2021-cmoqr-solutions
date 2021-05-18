@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question 3 \\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=1]{Q3_img}
+    \label{fig:diagram}
+\end{figure}
+Join $AD$ and $CE$.
+Let $Q$ be the intersection of $\overline{AD}$ and $\overline{CE}$. \\
+\textbf{Now, prove $P$ is $Q$.} \\
+
+Note that $ABCDE$ is a regular pentagon, so its interior angles all measure $108^\circ$. \\
+Note that since $AE = ED$, $\triangle AED$ is isosceles with base $\overline{AD}$. Thus:
+$$\angle ADE = \angle DAE = \frac{180^\circ-\angle AED}{2} = \frac{180^\circ-108^\circ}{2} = 36^\circ.$$
+Similarly, since $ED = CD$ and $\angle CDE = 108^\circ$, $\angle CED = 36^\circ$. \\
+Thus, $\angle ADE = \angle CED = 36^\circ$. \\
+Since $Q$ is on $\overline{AD}$ and $\overline{CE}$, thus:
+$$\angle QDE = \angle ADE = \angle CED = \angle QED = 36^\circ.$$
+
+\iffalse
+Since $\angle QDE = \angle ADE = \angle CED = \angle QED$, $\triangle EPD$ is isosceles with base $\overline{ED}$. Thus:
+$$\angle EQD = 180^\circ - \angle QDE - \angle QED = 180^\circ - 36^\circ - 36^\circ = 108^\circ.$$
+\fi
+$Q$ is on $\overline{AD}$, use the exterior angle sum property:
+$$\angle AQE = \angle QED + \angle QDE = 36^\circ + 36^\circ = 72^\circ.$$
+Also, $\angle AEQ = \angle AED - \angle QED = 108^\circ - 36^\circ = 72^\circ$. \\
+Thus, $\angle AEQ = \angle AQE = 72^\circ$, and thus $\triangle EAQ$ is isosceles with base $\overline{EQ}$.
+Thus, $AQ = AE = AB$. \\
+Similarly, due to symmetry, $CQ = CD = CB$. \\
+Since $AQ = AB$, $Q$ is on $C_1$; $CQ = CB$, $Q$ is on $C_2$. \\
+Thus, $Q$ is an intersection of $C_1$ and $C_2$. \\
+$Q$ is not on the same side of $\overline{AC}$ as $B$, so $Q$ cannot be $B$. \\
+\textbf{Thus, $Q$ must be $P$.} \\ \\ \\
+
+\rightline{(Continued on next page.)}
+\newpage
+Join $PY$, $PX$, $CX$. Let the circle centred at $P$ passing through $E,D,X,Y$ be $\omega$.\\
+
+Note that $\angle CPD = \angle APE = 72^\circ$. \\
+$CD = CX$ as they are radii of $C_2$, and $PX = PD$ as they are radii of $\omega$. \\
+Thus, $\triangle CPX \cong \triangle CDP$ by SSS congruence. \\
+Thus, $\angle CPX = \angle CPD = 72^\circ$ \\
+Since $P$ is on $\overline{CE}$:
+$$\angle APX = 180^\circ - \angle APE - \angle CPX = 180^\circ - 72^\circ - 72^\circ = 36^\circ.$$
+$PY = PE$ as they are radii of $\omega$, thus:
+$$\angle PYE = \angle PEY = \angle AEP = 72^\circ.$$
+Thus, $\angle EPY = 180^\circ - \angle PYE - \angle PEY = 36^\circ$,
+$$\angle APY = \angle APE - \angle EPY = 72^\circ - 36^\circ = 36^\circ.$$
+Since, $\angle APX = \angle APY = 36^\circ$, $PX = PY$ as they are radii of $\omega$, and $\triangle APX$ and $\triangle APY$ share segment $\overline{AP}$. $\triangle APX \cong \triangle APY$ by SAS congruence. \\
+Thus, $AX = AY$.
+
+\end{document}

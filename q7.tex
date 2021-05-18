@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\usepackage{geometry}
+\geometry{
+ letterpaper,
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm
+ }
+ 
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question 7 \\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+Given the equation:
+$$\cos(B-C) + \cos(C-A) + \cos(A-B) = -3/2,$$
+use the trigonometric identities to expand the left side and multiply both sides by 2:
+\begin{align*}
+    2\cos(B)\cos(C) + 2\sin(B)\sin(C) & \\
+    + 2\cos(C)\cos(A) + 2\sin(C)\sin(A) & \\
+    + 2\cos(A)\cos(B) + 2\sin(A)\sin(B) &=  -3.
+\end{align*}
+On the right side, use the Pythagorean identity: $\cos^2(\theta) + \sin^2(\theta) = 1$ for any real $\theta$:
+\begin{align*}
+    2\cos(B)\cos(C) + 2\sin(B)\sin(C) & \\
+    + 2\cos(C)\cos(A) + 2\sin(C)\sin(A) & \\
+    + 2\cos(A)\cos(B) + 2\sin(A)\sin(B) &=  -\left[\cos^2(A) + \sin^2(A) + \cos^2(B) + \sin^2(B) + \cos^2(C) + \sin^2(C) \right].
+\end{align*}
+Move the right side to the left and rearrange: 
+\begin{align*}
+    \left[\cos^2(A) + \cos^2(B) + \cos^2(C) + 2\cos(A)\cos(B) + 2\cos(B)\cos(C) + 2\cos(C)\cos(A)\right] & \\
+    + \left[\sin^2(A) + \sin^2(B) + \sin^2(C) + 2\sin(A)\sin(B) + 2\sin(B)\sin(C) + 2\sin(C)\sin(A)\right] &= 0 \\
+    [\cos(A) + \cos(B) + \cos(C)]^2 + [\sin(A) + \sin(B) + \sin(C)]^2 &= 0.
+\end{align*}
+By the trivial inequality, the two squares are non-negative. They also sum to 0, thus:
+$$[\cos(A) + \cos(B) + \cos(C)]^2 = 0 \text{ and } [\sin(A) + \sin(B) + \sin(C)]^2 = 0.$$
+Therefore:
+$$\cos(A) + \cos(B) + \cos(C) = \boxed{0}.$$
+
+\end{document}

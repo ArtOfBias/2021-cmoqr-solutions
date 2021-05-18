@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\usepackage{geometry}
+\geometry{
+ letterpaper,
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm
+ }
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question 2 \\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+We first find $x+y+z$:
+\begin{align*}
+    (x + y + z)^2 &= x^2 + y^2 + z^2 + 2xy + 2yz + 2zx \\
+    &= 24 + 2(-4) \\
+    &= 16 \\
+    x + y + z &= \pm 4.
+\end{align*}
+Note that:
+$$(xy + yz + zx)(x + y + z) = 3xyz + xy^2 + yz^2 + zx^2 + x^2y + y^2z + z^2x = -4(x + y + z).$$
+We use this in the cube of the sum:
+\begin{align*}
+    (x + y + z)^3 &= x^3 + y^3 + z^3 + 6xyz + 3(xy^2 + yz^2 + zx^2 + x^2y + y^2z + z^2x) \\
+    &= (x^3 + y^3 + z^3 + 3xyz) + 3(3xyz + xy^2 + yz^2 + zx^2 + x^2y + y^2z + z^2x) - 6xyz \\
+    &= 16 + 3(-4)(x + y + z) - 6xyz
+\end{align*}
+\begin{align}
+(x + y + z)^3 = 16 - 12(x + y + z) - 6xyz
+\end{align}
+Consider the case when $x + y + z = -4$, substitute this into $(1)$, we obtain:
+\begin{align*}
+    (-4)^3 &= 16 - 12(-4) - 6xyz \\
+    6xyz &= 128.
+\end{align*}
+Since $x,y,z$ are integers and $128$ is not divisible by $6$, this is a contradiction. Hence, $x+y+z\neq -4$. \\
+
+Now, we know $x + y + z = 4$, substitute this into $(1)$, we obtain:
+\begin{align*}
+    (4)^3 &= 16 + 3(-4)(4) - 6xyz \\
+    6xyz &= -96 \\
+    xyz &= -16.
+\end{align*}
+Now, without loss of generality assume $x\ge y\ge z$ as the equations are symmetric. \\
+Since $xyz = -16$, $x + y + z = 4$, and $x\ge y\ge z$, we know $z < 0$ and $x,y > 0$. \\
+We also know that $x,y,z\mid 16$, so $x,y,z \in \{\pm1,\pm2,\pm4,\pm8,\pm16\}$. \\
+We test values of $x$: \\
+$x=16$ gives $(16,1,-1)$, the sum is too large. \\
+$x=8$ gives $(8,2,-1)$ and $(8,1,-2)$, the sums are too large. \\
+$x=4$ gives $(4,4,-1)$, $(4,2,-2)$, and $(4,1,-4)$, only $(4,2,-2)$ satisfies the sum. \\
+$x=2$ gives $(2,2,-4)$ and $(2,1,-8)$, the sums are too small. \\
+$x=1$ gives $(1,1,-16)$, the sum is too small. \\
+
+Thus, when $x\ge y\ge z$, $(4,2,-2)$ is the only possible solution.
+However, without the assumption $x\ge y\ge z$, all permutations of the three numbers are solutions.
+Thus, the solutions are:
+$$(x,y,z) = (4,2,-2),(4,-2,2),(2,4,-2),(2,-2,4),(-2,4,2),(-2,2,4).$$
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\title{Repechage 2021}
+\date{February 2021}
+
+\usepackage{geometry}
+\geometry{
+ letterpaper,
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm
+ }
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\chead{Question 4 \\}
+\rfoot{{\thepage} of \pageref{LastPage}}
+
+\begin{document}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=200pt]{Q4_img}
+    \label{fig:diagram}
+\end{figure}
+
+Let $O_1$ denote the incircle of $\triangle ABC$ and $O_2$ denote the circumcircle of $\triangle ABC$.\\
+Let $d$ denote the length of $\overline{IO}$, $r$ the radius of $O_1$, and $R$ the radius of $O_2$. \\
+
+Since $P$ and $Q$ are on $O_1$, and $\overline{PQ}$ passes through its centre, $I$, $\overline{PQ}$ is a diameter of $O_1$. \\
+Thus, $PI = QI = r$. Since $\overline{PQ} \perp \overline{IO}$, $\angle PIO = \angle QIO = 90^{\circ}$. \\
+Therefore, $\triangle PIO \cong \triangle QIO$ by SAS congruence. Hence, $OP = OQ$. \\
+
+Substituting $d$ and $r$ and using the Pythagorean Theorem in right triangle $\triangle PIO$, we obtain:
+\begin{align*}
+    OP^2 &= PI^2 + IO^2 \\
+    OP &= \sqrt{r^2 + d^2}.
+\end{align*}
+By Euler's Theorem, we know that $d^2 = R^2 - 2Rr$. \\
+Note that $R>r$, so $R-r>0$, thus:
+$$OP = \sqrt{r^2 + R^2 - 2Rr} = \sqrt{(R - r)^2} = R - r.$$
+Recall that $OP = OQ$. Thus, the perimeter of $\triangle OPQ$ is:
+$$OP + PQ + OQ = (R-r) + (2r) + (R-r) = 2R,$$
+which is equal to the diameter of the circumcircle.
+\end{document}
